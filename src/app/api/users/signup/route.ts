@@ -5,7 +5,7 @@ import bcryptjs from "bcryptjs";
 
 connect();
 
-export async function POST(request: NextRequest) {
+/*export default async function POST(request: NextRequest) {
     try {
         const requestBody = await request.json();
 
@@ -51,5 +51,28 @@ export async function POST(request: NextRequest) {
             },
             { status: 500 }
         );
+    }
+}*/
+
+
+export default async function handler(req, res) {
+    if (req.method === "POST") {
+        try {
+            const { username, email, password } = req.body;
+
+            const newData = new User({
+                username,
+                email,
+                password,
+            });
+
+            await newData.save();
+            res.status(200).json({ message: "Data saved successfully" });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: "Error saving data" });
+        }
+    } else {
+        res.status(405).json({ message: "Method not allowed" });
     }
 }

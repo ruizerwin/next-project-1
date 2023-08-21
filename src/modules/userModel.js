@@ -1,4 +1,3 @@
-import { data } from "autoprefixer";
 import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
@@ -9,7 +8,7 @@ const userSchema = new mongoose.Schema({
     },
     email: {
         type:string,
-        reguired: [true, "Please insert Email"],
+        required: [true, "Please insert Email"],
         unique: true,
     },
     password: {
@@ -30,6 +29,7 @@ const userSchema = new mongoose.Schema({
     verifyTokenExpiry: Date,
 })
 
-const User = mongoose.models.Users || mongoose.model("User", userSchema);
+//const User = mongoose.models.Users || mongoose.model("Users", userSchema);
+const Users = mongoose.model("Users", userSchema);
 
-export default User;
+export default Users;
