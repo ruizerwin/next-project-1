@@ -51,46 +51,90 @@ export default function SignupPage() {
 
     return(
         <>
-            <div className="flex flex-col items-center justify-center min-h-screen py-2">
-                <h1>{loading? "Processing" : "Signup"}</h1>
-                <hr />
-                <label htmlFor="username">Username: </label>
-                <input
-                    className="p-2 border border-gray-300 rounded-lg mb-6 focus:outline-none focus:border-gray-600"
-                    id="username"
-                    type="text"
-                    value={user.username}
-                    onChange={(e) => setUser({...user, username:e.target.value})}
-                    placeholder="Username"
-                />
+            <div className="items-center justify-center py-2">
+                <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+                    <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+                        <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">{loading? "Processing" : "Signup"} Process</h2>
+                    </div>
 
-                <label htmlFor="email">Email: </label>
-                <input
-                    className="p-2 border border-gray-300 rounded-lg mb-6 focus:outline-none focus:border-gray-600"
-                    id="email"
-                    type="text"
-                    value={user.email}
-                    onChange={(e) => setUser({...user, email:e.target.value})}
-                    placeholder="Email"
-                />
 
-                <label htmlFor="password">Password: </label>
-                <input
-                    className="p-2 border border-gray-300 rounded-lg mb-6 focus:outline-none focus:border-gray-600"
-                    id="password"
-                    type="password"
-                    value={user.password}
-                    onChange={(e) => setUser({...user, password:e.target.value})}
-                    placeholder="Password"
-                />
 
-                <button
-                    onClick={onSignup}
-                    className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600">
-                        {buttonDisabled? "No signup" : "Signup"}
-                </button>
+                    <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+                        <form className="space-y-6" action="#" method="POST">
+                            <div>
+                                <label for="email" className="block text-sm font-medium leading-6 text-gray-900">Username</label>
+                                <div className="mt-2">
+                                    <input
+                                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                        id="username" 
+                                        name="username" 
+                                        type="text" 
+                                        autocomplete="username" 
+                                        required 
+                                    />
+                                </div>
+                            </div>
 
-                <Link href="/login">Login Me</Link>
+
+
+                            <div>
+                                <label for="email" className="block text-sm font-medium leading-6 text-gray-900">Email address</label>
+                                <div className="mt-2">
+                                    <input
+                                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                        id="email" 
+                                        name="email" 
+                                        type="email" 
+                                        autocomplete="email" 
+                                        required 
+                                    />
+                                </div>
+                            </div>
+
+
+
+                            <div>
+                                <div className="flex items-center justify-between">
+                                    <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Password</label>
+                                </div>
+                                <div className="mt-2">
+                                    <input 
+                                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                        id="password" 
+                                        name="password" 
+                                        type="password" 
+                                        autocomplete="current-password" 
+                                        required 
+                                    />
+                                </div>
+                            </div>
+
+
+
+                            <div>
+                                <div className="flex items-center justify-between">
+                                    <label for="password" className="block text-sm font-medium leading-6 text-gray-900">Password</label>
+                                    <div className="text-sm"><a href="#" class="font-semibold text-indigo-600 hover:text-indigo-500">Forgot password?</a></div>
+                                </div>
+                                <div className="mt-2">
+                                    <input 
+                                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                        name="confirmPassword" 
+                                        type="password" 
+                                        autocomplete="current-password" 
+                                        required
+                                    />
+                                </div>
+                            </div>
+
+
+                            <div>
+                                <button type="submit" className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">{buttonDisabled? "No signup" : "Signup"}</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div className="flex items-center justify-center"><Link href="/login">Login Me</Link></div>
             </div>
         </>
     )
